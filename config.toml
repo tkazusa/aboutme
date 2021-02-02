@@ -1,0 +1,6 @@
+baseURL = "https://tkazusa.github.io/aboutme/"
+languageCode = "en-us"
+title = "KazLog"
+theme = "book"
+publishDir = "docs"
+BookMenuBundle = "/menu"
