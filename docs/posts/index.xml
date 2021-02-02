@@ -17,9 +17,8 @@
       <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://tkazusa.github.io/aboutme/posts/license/</guid>
-      <description>最近の OSS 界隈のライセンス問題について #  2021/1/15 Doubling down on open, Part II https://www.elastic.co/jp/blog/licensing-change
- Elastic 社が Elasticsearch 及び Kibana を Apache 2.0 ライセンスコードから、Server Side Public License (SSPL) と Elastic License のデュアルライセンスへ移行すると宣言。 Elastic 社の主張としては、 Elastic コミュニティや Elastic Cloud やセルフマネージド向けの Elastic ソフトウェアをご利用のお客様へは影響がないとしている  2020/1/20 ライセンス変更に関する説明 https://www.elastic.co/jp/blog/license-change-clarification
- 「Amazon Elasticsearch Serviceをはじめ、Elasticのプロダクトを入手し、サービスとして直接販売している事業者には影響があります。」としている SSLP は GPL に基づくライセンス、コピーレフトライセンスだが、OSI認可ライセンスではない Elastic Liccense はコピーレフトがない  BSL などを参考にシンプルにしていく可能性がある、BSL は Open Source Initiative が認めるオープンソースライセンスではないが、OSI創立者の Bruce Persens 氏が 2017 年に一定の評価 BSL を最新のソースコードに 3 年から 5 年くらいの期限付きで設定し、ALv2 へ置き換えるなどを検討    そもそも Open Distro for Elasticsearch を出した理由</description>
+      <description>最近の OSS 界隈のライセンス問題について #  Elastic 社の Elasticsearch 及び Kibana のライセンス変更に関連して、AWS が Stepping up for a truly open source Elasticsearchで言及した、&amp;ldquo;What this means for the open source community&amp;rdquo; が気になったので少し調べてみた。
+ The term “open source” has had a specific meaning since it was coined in 1998. Elastic’s assertions that the SSPL is “free and open” are misleading and wrong. They’re trying to claim the benefits of open source, while chipping away at the very definition of open source itself.</description>
     </item>
     
   </channel>
