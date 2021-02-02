@@ -6,16 +6,26 @@
     <description>Recent content in Top page on KazLog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 28 Sep 2014 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://tkazusa.github.io/aboutme/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>最近の OSS 界隈のライセンス問題について</title>
+      <link>https://tkazusa.github.io/aboutme/posts/license/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://tkazusa.github.io/aboutme/posts/license/</guid>
+      <description>最近の OSS 界隈のライセンス問題について #  </description>
+    </item>
+    
+    <item>
       <title></title>
-      <link>https://tkazusa.github.io/aboutme/docs/rust/sample/</link>
+      <link>https://tkazusa.github.io/aboutme/docs/activities/rust/sample/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tkazusa.github.io/aboutme/docs/rust/sample/</guid>
+      <guid>https://tkazusa.github.io/aboutme/docs/activities/rust/sample/</guid>
       <description>Sample #  </description>
     </item>
     

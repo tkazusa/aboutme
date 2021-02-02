@@ -7,15 +7,26 @@
   </url>
   
   <url>
-    <loc>https://tkazusa.github.io/aboutme/docs/rust/</loc>
+    <loc>https://tkazusa.github.io/aboutme/posts/license/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://tkazusa.github.io/aboutme/docs/rust/sample/</loc>
+    <loc>https://tkazusa.github.io/aboutme/docs/activities/rust/</loc>
   </url>
   
   <url>
     <loc>https://tkazusa.github.io/aboutme/posts/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tkazusa.github.io/aboutme/</loc>
+    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://tkazusa.github.io/aboutme/docs/activities/rust/sample/</loc>
   </url>
   
   <url>
@@ -24,10 +35,6 @@
   
   <url>
     <loc>https://tkazusa.github.io/aboutme/tags/</loc>
-  </url>
-  
-  <url>
-    <loc>https://tkazusa.github.io/aboutme/</loc>
   </url>
   
 </urlset>
