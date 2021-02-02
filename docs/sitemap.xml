@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://tkazusa.github.io/aboutme/docs/</loc>
+    <loc>https://tkazusa.github.io/aboutme/docs/activities/</loc>
   </url>
   
   <url>
@@ -31,6 +31,10 @@
   
   <url>
     <loc>https://tkazusa.github.io/aboutme/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://tkazusa.github.io/aboutme/docs/</loc>
   </url>
   
   <url>
