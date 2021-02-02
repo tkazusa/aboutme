@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>最近の OSS 界隈のライセンス問題について</title>
+      <title>SSPL をきっかけに最近の OSS 界隈のライセンス問題について</title>
       <link>https://tkazusa.github.io/aboutme/posts/license/</link>
       <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://tkazusa.github.io/aboutme/posts/license/</guid>
-      <description>最近の OSS 界隈のライセンス問題について #  Elastic 社の Elasticsearch 及び Kibana のライセンス変更に関連して、AWS が Stepping up for a truly open source Elasticsearchで言及した、&amp;ldquo;What this means for the open source community&amp;rdquo; が気になったので少し調べてみた。
+      <description>SSPL をきっかけに最近の OSS 界隈のライセンス問題について #  Elastic 社の Elasticsearch 及び Kibana のライセンス変更に関連して、AWS が Stepping up for a truly open source Elasticsearchで言及した、&amp;ldquo;What this means for the open source community&amp;rdquo; が気になったので少し調べてみた。
  The term “open source” has had a specific meaning since it was coined in 1998. Elastic’s assertions that the SSPL is “free and open” are misleading and wrong. They’re trying to claim the benefits of open source, while chipping away at the very definition of open source itself.</description>
     </item>
     
