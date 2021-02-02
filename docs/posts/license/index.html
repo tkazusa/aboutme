@@ -5,18 +5,22 @@
   <meta name="generator" content="Hugo 0.74.3" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="最近の OSS 界隈のライセンス問題について #  ">
+<meta name="description" content="最近の OSS 界隈のライセンス問題について #  2021/1/15 Doubling down on open, Part II https://www.elastic.co/jp/blog/licensing-change
+ Elastic 社が Elasticsearch 及び Kibana を Apache 2.0 ライセンスコードから、Server Side Public License (SSPL) と Elastic License のデュアルライセンスへ移行すると宣言。 Elastic 社の主張としては、 Elastic コミュニティや Elastic Cloud やセルフマネージド向けの Elastic ソフトウェアをご利用のお客様へは影響がないとしている  2020/1/20 ライセンス変更に関する説明 https://www.elastic.co/jp/blog/license-change-clarification
+ 「Amazon Elasticsearch Serviceをはじめ、Elasticのプロダクトを入手し、サービスとして直接販売している事業者には影響があります。」としている SSLP は GPL に基づくライセンス、コピーレフトライセンスだが、OSI認可ライセンスではない Elastic Liccense はコピーレフトがない  BSL などを参考にシンプルにしていく可能性がある、BSL は Open Source Initiative が認めるオープンソースライセンスではないが、OSI創立者の Bruce Persens 氏が 2017 年に一定の評価 BSL を最新のソースコードに 3 年から 5 年くらいの期限付きで設定し、ALv2 へ置き換えるなどを検討    そもそも Open Distro for Elasticsearch を出した理由">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="最近の OSS 界隈のライセンス問題について" />
-<meta property="og:description" content="最近の OSS 界隈のライセンス問題について #  " />
+<meta property="og:description" content="最近の OSS 界隈のライセンス問題について #  2021/1/15 Doubling down on open, Part II https://www.elastic.co/jp/blog/licensing-change
+ Elastic 社が Elasticsearch 及び Kibana を Apache 2.0 ライセンスコードから、Server Side Public License (SSPL) と Elastic License のデュアルライセンスへ移行すると宣言。 Elastic 社の主張としては、 Elastic コミュニティや Elastic Cloud やセルフマネージド向けの Elastic ソフトウェアをご利用のお客様へは影響がないとしている  2020/1/20 ライセンス変更に関する説明 https://www.elastic.co/jp/blog/license-change-clarification
+ 「Amazon Elasticsearch Serviceをはじめ、Elasticのプロダクトを入手し、サービスとして直接販売している事業者には影響があります。」としている SSLP は GPL に基づくライセンス、コピーレフトライセンスだが、OSI認可ライセンスではない Elastic Liccense はコピーレフトがない  BSL などを参考にシンプルにしていく可能性がある、BSL は Open Source Initiative が認めるオープンソースライセンスではないが、OSI創立者の Bruce Persens 氏が 2017 年に一定の評価 BSL を最新のソースコードに 3 年から 5 年くらいの期限付きで設定し、ALv2 へ置き換えるなどを検討    そもそも Open Distro for Elasticsearch を出した理由" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tkazusa.github.io/aboutme/posts/license/" />
-<meta property="article:published_time" content="2014-09-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2014-09-28T00:00:00+00:00" />
+<meta property="article:published_time" content="2021-02-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-02T00:00:00+00:00" />
 <title>最近の OSS 界隈のライセンス問題について | KazLog</title>
 <link rel="manifest" href="/aboutme/manifest.json">
 <link rel="icon" href="/aboutme/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/aboutme/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
-<script defer src="/aboutme/en.search.min.fbc4b88fa3173e1f8787448b5141bb4bb65a04bb64ab988f38ae28982b09481c.js" integrity="sha256-&#43;8S4j6MXPh&#43;Hh0SLUUG7S7ZaBLtkq5iPOK4omCsJSBw="></script>
+<script defer src="/aboutme/en.search.min.cd7663e34f87c66878f46cec0f9e4f8acc15589af59c4172b4761160786a2b84.js" integrity="sha256-zXZj40&#43;Hxmh49GzsD55PiswVWJr1nEFytHYRYHhqK4Q="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -179,7 +183,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#最近の-oss-界隈のライセンス問題について">最近の OSS 界隈のライセンス問題について</a></li>
+    <li><a href="#最近の-oss-界隈のライセンス問題について">最近の OSS 界隈のライセンス問題について</a>
+      <ul>
+        <li><a href="#mariadbが作ったbusiness-source-license-11bsl">MariaDBが作った「Business Source License 1.1」（BSL)</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -197,7 +205,7 @@ https://github.com/alex-shpak/hugo-book
     <a href="/aboutme/posts/license/">最近の OSS 界隈のライセンス問題について</a>
   </h1>
   
-  <h5>September 28, 2014</h5>
+  <h5>February 2, 2021</h5>
 
 
 
@@ -210,6 +218,47 @@ https://github.com/alex-shpak/hugo-book
   最近の OSS 界隈のライセンス問題について
   <a class="anchor" href="#%e6%9c%80%e8%bf%91%e3%81%ae-oss-%e7%95%8c%e9%9a%88%e3%81%ae%e3%83%a9%e3%82%a4%e3%82%bb%e3%83%b3%e3%82%b9%e5%95%8f%e9%a1%8c%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6">#</a>
 </h2>
+<p>2021/1/15 Doubling down on open, Part II
+<a href="https://www.elastic.co/jp/blog/licensing-change">https://www.elastic.co/jp/blog/licensing-change</a></p>
+<ul>
+<li>Elastic 社が Elasticsearch 及び Kibana を Apache 2.0 ライセンスコードから、Server Side Public License (SSPL) と Elastic License のデュアルライセンスへ移行すると宣言。</li>
+<li>Elastic 社の主張としては、 Elastic コミュニティや Elastic Cloud やセルフマネージド向けの Elastic ソフトウェアをご利用のお客様へは影響がないとしている</li>
+</ul>
+<p>2020/1/20  ライセンス変更に関する説明
+<a href="https://www.elastic.co/jp/blog/license-change-clarification">https://www.elastic.co/jp/blog/license-change-clarification</a></p>
+<ul>
+<li>「Amazon Elasticsearch Serviceをはじめ、Elasticのプロダクトを入手し、サービスとして直接販売している事業者には影響があります。」としている</li>
+<li>SSLP は GPL に基づくライセンス、コピーレフトライセンスだが、OSI認可ライセンスではない</li>
+<li>Elastic Liccense はコピーレフトがない
+<ul>
+<li>BSL などを参考にシンプルにしていく可能性がある、BSL は Open Source Initiative が認めるオープンソースライセンスではないが、OSI創立者の Bruce Persens 氏が 2017 年に一定の評価</li>
+<li>BSL を最新のソースコードに 3 年から 5 年くらいの期限付きで設定し、ALv2 へ置き換えるなどを検討</li>
+</ul>
+</li>
+</ul>
+<p>そもそも Open Distro for Elasticsearch を出した理由</p>
+<ul>
+<li><a href="https://www.itmedia.co.jp/news/articles/2101/22/news098_2.html">https://www.itmedia.co.jp/news/articles/2101/22/news098_2.html</a></li>
+<li><a href="https://www.publickey1.jp/blog/19/awselasticsearchossopen_distro_for_elasticsearch.html">https://www.publickey1.jp/blog/19/awselasticsearchossopen_distro_for_elasticsearch.html</a></li>
+<li>Elasticservice のコードにオープンソースとプロプライエタリなコードが混在していて、うかつにビルドして使ってしまうと、ライセンス違反に抵触するかも。</li>
+<li>Open Distro for Elasticsearch はオリジナルの Elasticsearch のフォークではない。Fork でないならなんなの？</li>
+<li>AWSが「Open Distro for Elasticsearch」がフォークではなく、アップストリームにフィードバックし、オリジナルの最新バージョンに追随していくと表明しているのは、指摘されるような自己に都合の良いフォークを作るつもりでやっているのではないことを明確にしたかったためかもしれません。</li>
+<li>Upstream first とは: <a href="https://www.redhat.com/en/blog/what-open-source-upstream">https://www.redhat.com/en/blog/what-open-source-upstream</a></li>
+</ul>
+<p>2021/1/20
+License Change Clarification
+<a href="https://www.elastic.co/blog/license-change-clarification">https://www.elastic.co/blog/license-change-clarification</a></p>
+<p>Amazon: NOT OK - why we had to change Elastic licensing
+<a href="https://www.elastic.co/blog/why-license-change-AWS">https://www.elastic.co/blog/why-license-change-AWS</a></p>
+<p>2021/1/21
+Stepping up for a truly open source Elasticsearch
+<a href="https://aws.amazon.com/jp/blogs/opensource/stepping-up-for-a-truly-open-source-elasticsearch/">https://aws.amazon.com/jp/blogs/opensource/stepping-up-for-a-truly-open-source-elasticsearch/</a></p>
+<p>Elastic 社による Elasticsearch および Kibana のライセンス変更にともなう AWS の対応方針のご案内
+<a href="https://aws.amazon.com/jp/blogs/news/aws-policy-for-elasticsearch-licence-change/">https://aws.amazon.com/jp/blogs/news/aws-policy-for-elasticsearch-licence-change/</a></p>
+<h3 id="mariadbが作ったbusiness-source-license-11bsl">
+  MariaDBが作った「Business Source License 1.1」（BSL)
+  <a class="anchor" href="#mariadb%e3%81%8c%e4%bd%9c%e3%81%a3%e3%81%9fbusiness-source-license-11bsl">#</a>
+</h3>
 </p>
 </article>
  
@@ -247,7 +296,11 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#最近の-oss-界隈のライセンス問題について">最近の OSS 界隈のライセンス問題について</a></li>
+    <li><a href="#最近の-oss-界隈のライセンス問題について">最近の OSS 界隈のライセンス問題について</a>
+      <ul>
+        <li><a href="#mariadbが作ったbusiness-source-license-11bsl">MariaDBが作った「Business Source License 1.1」（BSL)</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
