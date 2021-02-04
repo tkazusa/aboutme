@@ -5,17 +5,17 @@
   <meta name="generator" content="Hugo 0.74.3" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
+<meta name="description" content="[WIP]Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
  pub trait Future { type Output; fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt;; } pub enum Poll&lt;T&gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
  async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
 非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
-Web フレームワーク #  ">
+Web フレームワーク #   wrap actix-web rocket  ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
+<meta property="og:description" content="[WIP]Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
  pub trait Future { type Output; fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt;; } pub enum Poll&lt;T&gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
  async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
 非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
-Web フレームワーク #  " />
+Web フレームワーク #   wrap actix-web rocket  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/" />
 
@@ -23,7 +23,7 @@ Web フレームワーク #  " />
 <link rel="manifest" href="/aboutme/manifest.json">
 <link rel="icon" href="/aboutme/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/aboutme/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
-<script defer src="/aboutme/en.search.min.5932d1bdd14044d1efab57681ab77bf5c0934e2378b8d08f16e38643f5360afa.js" integrity="sha256-WTLRvdFARNHvq1doGrd79cCTTiN4uNCPFuOGQ/U2Cvo="></script>
+<script defer src="/aboutme/en.search.min.42be0aad2bac55147e120295dd4911cded0c534abbecde5cc6dd484b3cd1ad2d.js" integrity="sha256-Qr4KrSusVRR&#43;EgKV3UkRze0MU0q77N5cxt1ISzzRrS0="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -212,9 +212,9 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="rust-非同期処理と対応した-webserver-クレイトまとめ">
-  Rust 非同期処理と対応した webserver クレイトまとめ
-  <a class="anchor" href="#rust-%e9%9d%9e%e5%90%8c%e6%9c%9f%e5%87%a6%e7%90%86%e3%81%a8%e5%af%be%e5%bf%9c%e3%81%97%e3%81%9f-webserver-%e3%82%af%e3%83%ac%e3%82%a4%e3%83%88%e3%81%be%e3%81%a8%e3%82%81">#</a>
+  <article class="markdown"><h1 id="wiprust-非同期処理と対応した-webserver-クレイトまとめ">
+  [WIP]Rust 非同期処理と対応した webserver クレイトまとめ
+  <a class="anchor" href="#wiprust-%e9%9d%9e%e5%90%8c%e6%9c%9f%e5%87%a6%e7%90%86%e3%81%a8%e5%af%be%e5%bf%9c%e3%81%97%e3%81%9f-webserver-%e3%82%af%e3%83%ac%e3%82%a4%e3%83%88%e3%81%be%e3%81%a8%e3%82%81">#</a>
 </h1>
 <p>Rust 1.39 から導入された <code>Future</code> については、<a href="https://tech-blog.optim.co.jp/entry/2019/11/08/163000#Future%E3%81%A8%E3%81%AF">Rustの非同期プログラミングをマスターする</a> が詳しい。</p>
 <blockquote>
@@ -235,6 +235,11 @@ https://github.com/alex-shpak/hugo-book
   Web フレームワーク
   <a class="anchor" href="#web-%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%83%af%e3%83%bc%e3%82%af">#</a>
 </h2>
+<ul>
+<li>wrap</li>
+<li>actix-web</li>
+<li>rocket</li>
+</ul>
 </article>
  
       

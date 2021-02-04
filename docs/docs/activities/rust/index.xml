@@ -16,11 +16,11 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/</guid>
-      <description>Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
+      <description>[WIP]Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
  pub trait Future { type Output; fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, cx: &amp;amp;mut Context) -&amp;gt; Poll&amp;lt;Self::Output&amp;gt;; } pub enum Poll&amp;lt;T&amp;gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
  async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
 非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
-Web フレームワーク #  </description>
+Web フレームワーク #   wrap actix-web rocket  </description>
     </item>
     
     <item>
