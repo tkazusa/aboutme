@@ -20,7 +20,7 @@
  pub trait Future { type Output; fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, cx: &amp;amp;mut Context) -&amp;gt; Poll&amp;lt;Self::Output&amp;gt;; } pub enum Poll&amp;lt;T&amp;gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
  async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
 非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
-Web フレームワーク #   wrap actix-web rocket  </description>
+Web フレームワーク #  warp #   hyper 上に実装されている runtime は tokio で OK  tokio = { version = &amp;quot;1&amp;quot;, features = [&amp;quot;full&amp;quot;] } warp = &amp;quot;0.</description>
     </item>
     
     <item>

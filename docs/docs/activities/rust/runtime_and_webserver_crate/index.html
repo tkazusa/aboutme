@@ -9,13 +9,13 @@
  pub trait Future { type Output; fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt;; } pub enum Poll&lt;T&gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
  async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
 非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
-Web フレームワーク #   wrap actix-web rocket  ">
+Web フレームワーク #  warp #   hyper 上に実装されている runtime は tokio で OK  tokio = { version = &quot;1&quot;, features = [&quot;full&quot;] } warp = &quot;0.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
 <meta property="og:description" content="[WIP]Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
  pub trait Future { type Output; fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt;; } pub enum Poll&lt;T&gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
  async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
 非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
-Web フレームワーク #   wrap actix-web rocket  " />
+Web フレームワーク #  warp #   hyper 上に実装されている runtime は tokio で OK  tokio = { version = &quot;1&quot;, features = [&quot;full&quot;] } warp = &quot;0." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/" />
 
@@ -23,7 +23,7 @@ Web フレームワーク #   wrap actix-web rocket  " />
 <link rel="manifest" href="/aboutme/manifest.json">
 <link rel="icon" href="/aboutme/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/aboutme/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
-<script defer src="/aboutme/en.search.min.42be0aad2bac55147e120295dd4911cded0c534abbecde5cc6dd484b3cd1ad2d.js" integrity="sha256-Qr4KrSusVRR&#43;EgKV3UkRze0MU0q77N5cxt1ISzzRrS0="></script>
+<script defer src="/aboutme/en.search.min.1ec1130811588a18f54471458dab30ea453c4a552bffa17822db308e2a61adf4.js" integrity="sha256-HsETCBFYihj1RHFFjasw6kU8SlUr/6F4ItswjiphrfQ="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -199,7 +199,15 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#web-フレームワーク">Web フレームワーク</a></li>
+    <li><a href="#web-フレームワーク">Web フレームワーク</a>
+      <ul>
+        <li><a href="#warp">warp</a></li>
+        <li><a href="#rweb">rweb</a></li>
+        <li><a href="#actix-web">actix-web</a></li>
+        <li><a href="#rocket">rocket</a></li>
+        <li><a href="#http-client">HTTP Client</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -235,11 +243,36 @@ https://github.com/alex-shpak/hugo-book
   Web フレームワーク
   <a class="anchor" href="#web-%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%83%af%e3%83%bc%e3%82%af">#</a>
 </h2>
+<h3 id="warp">
+  warp
+  <a class="anchor" href="#warp">#</a>
+</h3>
 <ul>
-<li>wrap</li>
-<li>actix-web</li>
-<li>rocket</li>
+<li><a href="https://hyper.rs/">hyper</a> 上に実装されている</li>
+<li>runtime は tokio で OK</li>
 </ul>
+<pre><code>tokio = { version = &quot;1&quot;, features = [&quot;full&quot;] }
+warp = &quot;0.3&quot;
+</code></pre><h3 id="rweb">
+  rweb
+  <a class="anchor" href="#rweb">#</a>
+</h3>
+<p><code>warp</code> をベースに作成されてて、可読性が上がり、OpenAPI のサポートがある。</p>
+<h3 id="actix-web">
+  actix-web
+  <a class="anchor" href="#actix-web">#</a>
+</h3>
+<p>TBD</p>
+<h3 id="rocket">
+  rocket
+  <a class="anchor" href="#rocket">#</a>
+</h3>
+<p>TBD</p>
+<h3 id="http-client">
+  HTTP Client
+  <a class="anchor" href="#http-client">#</a>
+</h3>
+<p>warp, hyper, reqwert の作者である seanmonstar さんが <a href="https://seanmonstar.com/post/153221119046/introducing-reqwest">Introducing Reqwest</a>で紹介するように、high-level に HTTP Client 書きたいなら reqwest を使った方が良いとのこと。<a href="https://qiita.com/legokichi/items/53536fcf247143a4721c">actix-http は  actix-web で使われる http ライブラリであり、これも hyper を利用したほかのエコシステムとは一線を画してします。</a></p>
 </article>
  
       
@@ -276,7 +309,15 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#web-フレームワーク">Web フレームワーク</a></li>
+    <li><a href="#web-フレームワーク">Web フレームワーク</a>
+      <ul>
+        <li><a href="#warp">warp</a></li>
+        <li><a href="#rweb">rweb</a></li>
+        <li><a href="#actix-web">actix-web</a></li>
+        <li><a href="#rocket">rocket</a></li>
+        <li><a href="#http-client">HTTP Client</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
