@@ -2,5 +2,7 @@
 headless: true
 ---
 
-- [Table of Contents]({{< relref "/docs" >}})
+- [Contents]({{< relref "/docs" >}})
+    - [Activities]({{< relref "/docs/Activities" >}})
+        - [Rust]({{< relref "/docs/Activities/Rust" >}})
 <br />

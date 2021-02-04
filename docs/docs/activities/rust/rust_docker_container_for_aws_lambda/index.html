@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta name="generator" content="Hugo 0.74.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
+選択肢は、2つ。
+ Amazon Linux ベースのカスタムランタイム用のベースイメージがすでにあって、Lambda ランタイム APIを実装する Alpine や Debian Linux などの独自のベースイメージにした場合には Lamdbaランタイム API を実装する必要がある  関連するツールは下記。
+ Runtime interface clients: lambda と関数の間のコミュニケーションを監理する Lambda Runtime Interface Emulator にて、ローカルテストが実施できる  手順は、下記
+ AWS Lambda アプリケーションを実装 AWS Lambda のためのコンテナイメージを作成  Dockerfile の作成  Lambda Runtime Interface Client を追加 Lambda Runtime Interface Emulator を追加(オプション) Lambda Runtime Interface Client を起動する entry.sh を作成して、ENTRYPOINT とする     Amazon ECR へプッシュ AWS Lambda 上へデプロイ  Rust Runtime for AWS Lambda とは #   AWS Labs から提供されている Rust のための Runtime 詳しくは Rust Runtime for AWS Lambda Runtime API で実現すること  初期化エラーの通知 Handler の呼び出しとレスポンス or エラーの通知    参考 #   https://github.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
+選択肢は、2つ。
+ Amazon Linux ベースのカスタムランタイム用のベースイメージがすでにあって、Lambda ランタイム APIを実装する Alpine や Debian Linux などの独自のベースイメージにした場合には Lamdbaランタイム API を実装する必要がある  関連するツールは下記。
+ Runtime interface clients: lambda と関数の間のコミュニケーションを監理する Lambda Runtime Interface Emulator にて、ローカルテストが実施できる  手順は、下記
+ AWS Lambda アプリケーションを実装 AWS Lambda のためのコンテナイメージを作成  Dockerfile の作成  Lambda Runtime Interface Client を追加 Lambda Runtime Interface Emulator を追加(オプション) Lambda Runtime Interface Client を起動する entry.sh を作成して、ENTRYPOINT とする     Amazon ECR へプッシュ AWS Lambda 上へデプロイ  Rust Runtime for AWS Lambda とは #   AWS Labs から提供されている Rust のための Runtime 詳しくは Rust Runtime for AWS Lambda Runtime API で実現すること  初期化エラーの通知 Handler の呼び出しとレスポンス or エラーの通知    参考 #   https://github." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://tkazusa.github.io/aboutme/docs/activities/rust/rust_docker_container_for_aws_lambda/" />
+
+<title>Rust Docker Container for a W S Lambda | KazLog</title>
+<link rel="manifest" href="/aboutme/manifest.json">
+<link rel="icon" href="/aboutme/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/aboutme/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
+<script defer src="/aboutme/en.search.min.3a96a249666cf98ee9beaf8ed45b2e44c420a9776b616fc5bc43745b6fc5932a.js" integrity="sha256-OpaiSWZs&#43;Y7pvq&#43;O1FsuRMQgqXdrYW/FvEN0W2/Fkyo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/aboutme"><span>KazLog</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="https://tkazusa.github.io/aboutme/docs/activities/" class="">Activities</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5f3cb8b2a258a6b82f1426c5df1f50f0" class="toggle" checked />
+    <label for="section-5f3cb8b2a258a6b82f1426c5df1f50f0" class="flex justify-between">
+      <a  class="">Rust</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://tkazusa.github.io/aboutme/docs/activities/rust/rust_docker_container_for_aws_lambda/" class=" active">Rust Docker Container for a W S Lambda</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/aboutme/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/aboutme/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Rust Docker Container for a W S Lambda</strong>
+
+  <label for="toc-control">
+    
+    <img src="/aboutme/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#rust-runtime-for-aws-lambda-とは">Rust Runtime for AWS Lambda とは</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="aws-lambda-でのカスタムコンテナイメージで-rust-を動かす">
+  AWS Lambda でのカスタムコンテナイメージで Rust を動かす
+  <a class="anchor" href="#aws-lambda-%e3%81%a7%e3%81%ae%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e3%82%a4%e3%83%a1%e3%83%bc%e3%82%b8%e3%81%a7-rust-%e3%82%92%e5%8b%95%e3%81%8b%e3%81%99">#</a>
+</h1>
+<p><a href="https://aws.amazon.com/jp/blogs/news/new-for-aws-lambda-container-image-support/">AWS Lambda の新機能 – コンテナイメージのサポート</a> から、手順を確認。</p>
+<p>選択肢は、2つ。</p>
+<ul>
+<li>Amazon Linux ベースのカスタムランタイム用のベースイメージがすでにあって、Lambda ランタイム APIを実装する</li>
+<li>Alpine や Debian Linux などの独自のベースイメージにした場合には Lamdbaランタイム API を実装する必要がある</li>
+</ul>
+<p>関連するツールは下記。</p>
+<ul>
+<li>Runtime interface clients: lambda と関数の間のコミュニケーションを監理する</li>
+<li>Lambda Runtime Interface Emulator にて、ローカルテストが実施できる</li>
+</ul>
+<p>手順は、下記</p>
+<ul>
+<li>AWS Lambda アプリケーションを実装</li>
+<li>AWS Lambda のためのコンテナイメージを作成
+<ul>
+<li>Dockerfile の作成
+<ul>
+<li>Lambda Runtime Interface Client を追加</li>
+<li>Lambda Runtime Interface Emulator を追加(オプション)</li>
+<li>Lambda Runtime Interface Client を起動する <code>entry.sh</code> を作成して、<code>ENTRYPOINT</code> とする</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Amazon ECR へプッシュ</li>
+<li>AWS Lambda 上へデプロイ</li>
+</ul>
+<h3 id="rust-runtime-for-aws-lambda-とは">
+  Rust Runtime for AWS Lambda とは
+  <a class="anchor" href="#rust-runtime-for-aws-lambda-%e3%81%a8%e3%81%af">#</a>
+</h3>
+<ul>
+<li>AWS Labs から提供されている Rust のための Runtime</li>
+<li>詳しくは <a href="https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/">Rust Runtime for AWS Lambda</a></li>
+<li>Runtime API で実現すること
+<ul>
+<li>初期化エラーの通知</li>
+<li>Handler の呼び出しとレスポンス or エラーの通知</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考">
+  参考
+  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
+</h3>
+<ul>
+<li><a href="https://github.com/yoshihitoh/rust-lambda-example">https://github.com/yoshihitoh/rust-lambda-example</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#rust-runtime-for-aws-lambda-とは">Rust Runtime for AWS Lambda とは</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
