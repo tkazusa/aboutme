@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta name="generator" content="Hugo 0.74.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
+ pub trait Future { type Output; fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt;; } pub enum Poll&lt;T&gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
+ async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
+非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
+Web フレームワーク #  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
+ pub trait Future { type Output; fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt;; } pub enum Poll&lt;T&gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
+ async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
+非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
+Web フレームワーク #  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/" />
+
+<title>Runtime and Webserver Crate | KazLog</title>
+<link rel="manifest" href="/aboutme/manifest.json">
+<link rel="icon" href="/aboutme/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/aboutme/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
+<script defer src="/aboutme/en.search.min.5932d1bdd14044d1efab57681ab77bf5c0934e2378b8d08f16e38643f5360afa.js" integrity="sha256-WTLRvdFARNHvq1doGrd79cCTTiN4uNCPFuOGQ/U2Cvo="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/aboutme"><span>KazLog</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="https://tkazusa.github.io/aboutme/docs/activities/" class="">Activities</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5f3cb8b2a258a6b82f1426c5df1f50f0" class="toggle" checked />
+    <label for="section-5f3cb8b2a258a6b82f1426c5df1f50f0" class="flex justify-between">
+      <a  class="">Rust</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/" class=" active">Runtime and Webserver Crate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://tkazusa.github.io/aboutme/docs/activities/rust/rust_docker_container_for_aws_lambda/" class="">Rust Docker Container for a W S Lambda</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/aboutme/posts/" >
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/aboutme/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Runtime and Webserver Crate</strong>
+
+  <label for="toc-control">
+    
+    <img src="/aboutme/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#web-フレームワーク">Web フレームワーク</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="rust-非同期処理と対応した-webserver-クレイトまとめ">
+  Rust 非同期処理と対応した webserver クレイトまとめ
+  <a class="anchor" href="#rust-%e9%9d%9e%e5%90%8c%e6%9c%9f%e5%87%a6%e7%90%86%e3%81%a8%e5%af%be%e5%bf%9c%e3%81%97%e3%81%9f-webserver-%e3%82%af%e3%83%ac%e3%82%a4%e3%83%88%e3%81%be%e3%81%a8%e3%82%81">#</a>
+</h1>
+<p>Rust 1.39 から導入された <code>Future</code> については、<a href="https://tech-blog.optim.co.jp/entry/2019/11/08/163000#Future%E3%81%A8%E3%81%AF">Rustの非同期プログラミングをマスターする</a> が詳しい。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Rust" data-lang="Rust"><span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">trait</span> Future {
+    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Output</span>;
+    <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">poll</span>(self: <span style="color:#a6e22e">Pin</span><span style="color:#f92672">&lt;&amp;</span><span style="color:#66d9ef">mut</span> Self<span style="color:#f92672">&gt;</span>, cx: <span style="color:#66d9ef">&amp;</span><span style="color:#a6e22e">mut</span> Context) -&gt; <span style="color:#a6e22e">Poll</span><span style="color:#f92672">&lt;</span>Self::Output<span style="color:#f92672">&gt;</span>;
+}
+
+<span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Poll</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> {
+    Ready(T),
+    Pending,
+}
+</code></pre></div><p>というように、<code>Futue::poll</code> メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。</p>
+</blockquote>
+<p><code>async</code> キーワードを書くと、書かれた関数は <code>Future</code> トレイトを impl することになる。</p>
+<p>非同期処理には Runtime が必要であり、<a href="https://github.com/tokio-rs/tokio">tokio</a>、<a href="https://github.com/tokio-rs/tokio">async-std</a>、<a href="https://github.com/actix/actix-net">actix-net</a> などがある。</p>
+<h2 id="web-フレームワーク">
+  Web フレームワーク
+  <a class="anchor" href="#web-%e3%83%95%e3%83%ac%e3%83%bc%e3%83%a0%e3%83%af%e3%83%bc%e3%82%af">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#web-フレームワーク">Web フレームワーク</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

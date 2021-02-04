@@ -12,11 +12,24 @@
     
     <item>
       <title></title>
+      <link>https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/</guid>
+      <description>Rust 非同期処理と対応した webserver クレイトまとめ #  Rust 1.39 から導入された Future については、Rustの非同期プログラミングをマスターする が詳しい。
+ pub trait Future { type Output; fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, cx: &amp;amp;mut Context) -&amp;gt; Poll&amp;lt;Self::Output&amp;gt;; } pub enum Poll&amp;lt;T&amp;gt; { Ready(T), Pending, } というように、Futue::poll メソッドによって「タスクが完了した」あるいは、「タスクが実行中」という状態を返す。
+ async キーワードを書くと、書かれた関数は Future トレイトを impl することになる。
+非同期処理には Runtime が必要であり、tokio、async-std、actix-net などがある。
+Web フレームワーク #  </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://tkazusa.github.io/aboutme/docs/activities/rust/rust_docker_container_for_aws_lambda/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://tkazusa.github.io/aboutme/docs/activities/rust/rust_docker_container_for_aws_lambda/</guid>
-      <description>AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
+      <description>[WIP]AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
 選択肢は、2つ。
  Amazon Linux ベースのカスタムランタイム用のベースイメージがすでにあって、Lambda ランタイム APIを実装する Alpine や Debian Linux などの独自のベースイメージにした場合には Lamdbaランタイム API を実装する必要がある  関連するツールは下記。
  Runtime interface clients: lambda と関数の間のコミュニケーションを監理する Lambda Runtime Interface Emulator にて、ローカルテストが実施できる  手順は、下記

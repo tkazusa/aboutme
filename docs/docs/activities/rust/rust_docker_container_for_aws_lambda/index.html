@@ -5,13 +5,13 @@
   <meta name="generator" content="Hugo 0.74.3" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
+<meta name="description" content="[WIP]AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
 選択肢は、2つ。
  Amazon Linux ベースのカスタムランタイム用のベースイメージがすでにあって、Lambda ランタイム APIを実装する Alpine や Debian Linux などの独自のベースイメージにした場合には Lamdbaランタイム API を実装する必要がある  関連するツールは下記。
  Runtime interface clients: lambda と関数の間のコミュニケーションを監理する Lambda Runtime Interface Emulator にて、ローカルテストが実施できる  手順は、下記
  AWS Lambda アプリケーションを実装 AWS Lambda のためのコンテナイメージを作成  Dockerfile の作成  Lambda Runtime Interface Client を追加 Lambda Runtime Interface Emulator を追加(オプション) Lambda Runtime Interface Client を起動する entry.sh を作成して、ENTRYPOINT とする     Amazon ECR へプッシュ AWS Lambda 上へデプロイ  Rust Runtime for AWS Lambda とは #   AWS Labs から提供されている Rust のための Runtime 詳しくは Rust Runtime for AWS Lambda Runtime API で実現すること  初期化エラーの通知 Handler の呼び出しとレスポンス or エラーの通知    参考 #   https://github.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
+<meta property="og:description" content="[WIP]AWS Lambda でのカスタムコンテナイメージで Rust を動かす #  AWS Lambda の新機能 – コンテナイメージのサポート から、手順を確認。
 選択肢は、2つ。
  Amazon Linux ベースのカスタムランタイム用のベースイメージがすでにあって、Lambda ランタイム APIを実装する Alpine や Debian Linux などの独自のベースイメージにした場合には Lamdbaランタイム API を実装する必要がある  関連するツールは下記。
  Runtime interface clients: lambda と関数の間のコミュニケーションを監理する Lambda Runtime Interface Emulator にて、ローカルテストが実施できる  手順は、下記
@@ -23,7 +23,7 @@
 <link rel="manifest" href="/aboutme/manifest.json">
 <link rel="icon" href="/aboutme/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/aboutme/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
-<script defer src="/aboutme/en.search.min.3a96a249666cf98ee9beaf8ed45b2e44c420a9776b616fc5bc43745b6fc5932a.js" integrity="sha256-OpaiSWZs&#43;Y7pvq&#43;O1FsuRMQgqXdrYW/FvEN0W2/Fkyo="></script>
+<script defer src="/aboutme/en.search.min.5932d1bdd14044d1efab57681ab77bf5c0934e2378b8d08f16e38643f5360afa.js" integrity="sha256-WTLRvdFARNHvq1doGrd79cCTTiN4uNCPFuOGQ/U2Cvo="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -98,6 +98,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://tkazusa.github.io/aboutme/docs/activities/rust/runtime_and_webserver_crate/" class="">Runtime and Webserver Crate</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -204,9 +217,9 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="aws-lambda-でのカスタムコンテナイメージで-rust-を動かす">
-  AWS Lambda でのカスタムコンテナイメージで Rust を動かす
-  <a class="anchor" href="#aws-lambda-%e3%81%a7%e3%81%ae%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e3%82%a4%e3%83%a1%e3%83%bc%e3%82%b8%e3%81%a7-rust-%e3%82%92%e5%8b%95%e3%81%8b%e3%81%99">#</a>
+  <article class="markdown"><h1 id="wipaws-lambda-でのカスタムコンテナイメージで-rust-を動かす">
+  [WIP]AWS Lambda でのカスタムコンテナイメージで Rust を動かす
+  <a class="anchor" href="#wipaws-lambda-%e3%81%a7%e3%81%ae%e3%82%ab%e3%82%b9%e3%82%bf%e3%83%a0%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e3%82%a4%e3%83%a1%e3%83%bc%e3%82%b8%e3%81%a7-rust-%e3%82%92%e5%8b%95%e3%81%8b%e3%81%99">#</a>
 </h1>
 <p><a href="https://aws.amazon.com/jp/blogs/news/new-for-aws-lambda-container-image-support/">AWS Lambda の新機能 – コンテナイメージのサポート</a> から、手順を確認。</p>
 <p>選択肢は、2つ。</p>
